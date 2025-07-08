@@ -60,16 +60,24 @@ class Info:
 
 
 # Prompts the user to give their information
-class BankInfo:
-    def getInfo(self):
-        information = Info(
-            firstName=input("What is your First Name? : "),
-            lastName=input("What is your Last Name? : "),
-            address=input("What is your Address? (Street, city, state): "),
-            dateOfBirth=input("What is your Date of Birth? (mm/dd/year): "),
-            socialSecurity=input("What is your SSN? : "),
-        )
-        return information
+class BankInfo(Info, Account):
+
+    def __init__(self):
+        firstName = input("What is your First Name? : ")
+        lastName = input("What is your Last Name? : ")
+        address = input("What is your Address? (Street, city, state): ")
+        dateOfBirth = input("What is your Date of Birth? (mm/dd/year): ")
+        socialSecurity = input("What is your SSN? : ")
+        super().__init__(firstName, lastName, address, dateOfBirth, socialSecurity)
+
+    # def updateInfo(self):
+    #     return {
+    #         "firstName": input("What is your First Name? : "),
+    #         "lastName": input("What is your Last Name? : "),
+    #         "address": input("What is your Address? (Street, city, state): "),
+    #         "dateOfBirth": input("What is your Date of Birth? (mm/dd/year): "),
+    #         "socialSecurity": input("What is your SSN? : "),
+    #     }
 
     def getCard(self):
         card = Account(type=str(""), cash=float("0"), value=float("0"))
